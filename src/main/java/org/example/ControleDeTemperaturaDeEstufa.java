@@ -64,12 +64,12 @@ public class ControleDeTemperaturaDeEstufa {
                     desligar_aquecedor();
                     status_log += "Atemperatura está ideal, todos os equipamentos estão desligados";
                 }
-            } catch (LeituraInconsistente erro) { //pega o erro que teve em try
+            } catch (LeituraInconsistente e) { //pega o erro que teve em try
                 //se o erro for do tipo leitura vai executar ele
-                status_log = "Falha no sensor: " + erro.getMessage(); //guardo o erro na variavel status e pega a mensagem do throw la em cima
+                status_log = "Falha no sensor: " + e.getMessage(); //guardo o erro na variavel status e pega a mensagem do throw la em cima
                 //não precisa do system pq vai usar o finally e ele vai registrar tudo
-            } catch (FalhaNoAtuador erro) { //para o outro tipo de erro
-                status_log = "Falha no equipamento: " + erro.getMessage();
+            } catch (FalhaNoAtuador e) { //para o outro tipo de erro
+                status_log = "Falha no equipamento: " + e.getMessage();
             } finally { //aqui ele sempre vai rodar msm se deu certo ou não no try
                 System.out.println("\n");
                 System.out.println("Status do sensor: " + status_log); //pra mostrar o registro de histórico
